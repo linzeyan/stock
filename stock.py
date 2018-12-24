@@ -99,7 +99,7 @@ for number in stock_id:
         raw = pandas.DataFrame(content)
         raw.to_csv('{}/{}/{}_raw.csv'.format(path, date.today().strftime('%Y%m%d'), stock))
     
-        result = pandas.DataFrame(content)[['c','n','o','h','l','tv']].rename(index=str, columns={'c': '代號','n': '名稱','o':'開盤','h':'最高','l':'最低','tv':'當日成交量'})
+        result = pandas.DataFrame(content)[['d','c','n','o','h','l','tv']].rename(index=str, columns={'d': '日期', 'c': '代號','n': '名稱','o':'開盤','h':'最高','l':'最低','tv':'當日成交量'})
         result.to_csv('{}/{}/{}.csv'.format(path, date.today().strftime('%Y%m%d'), stock))
     except KeyError:
         print('Error ! stock : '+stock+' need to query again.')

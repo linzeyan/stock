@@ -33,7 +33,7 @@ import pymysql
 
 path = 'files/stock'
 folder_path = '{}/{}'.format(path, date.today().strftime('%Y%m%d'))
-dbhost = '127.0.0.1'
+dbhost = '172.16.10.249'
 dbport = 3306
 dbname = 'stock_in'
 dbuser = 'root'
@@ -90,6 +90,9 @@ for number in stock_id:
         result.to_sql(name='tb_filter',con=engine,if_exists='append',index=False)
     except KeyError:
         print('Error ! stock : '+stock+' need to query again.')
+        continue
+    except :
+        print('Error ! sotck: '+stock+' SQL may happen something wrong.')
         continue
 
 

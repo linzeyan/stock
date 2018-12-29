@@ -1,4 +1,4 @@
-#!/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import time
@@ -12,24 +12,6 @@ import MySQLdb
 from sqlalchemy import create_engine
 import pymysql
 
-#for row in content:
-#    try:
-#        file_path = '{}/{}.csv'.format(folder_path, row['c'])
-#        with open(file_path, 'a') as output_file:
-#            writer = csv.writer(output_file, delimiter=',')
-#            writer.writerow([
-#                row['t'],# 資料時間
-#                row['z'],# 最近成交價
-#                row['tv'],# 當盤成交量
-#                row['v'],# 當日累計成交量
-#                row['a'],# 最佳五檔賣出價格
-#                row['f'],# 最價五檔賣出數量
-#                row['b'],# 最佳五檔買入價格
-#                row['g']# 最佳五檔買入數量
-#            ])
-#
-#    except Exception as err:
-#        print(err)
 
 path = 'files/stock'
 folder_path = '{}/{}'.format(path, date.today().strftime('%Y%m%d'))

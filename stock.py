@@ -20,7 +20,7 @@ dbport = 3306
 dbname = 'stock_in'
 dbuser = 'root'
 dbpass = '1234qwer'
-engine = create_engine(str(r"mysql+pymysql://%s:" + '%s' + "@%s:%s/%s?charset=utf8") % (dbuser, dbpass, dbhost,dbport, dbname))
+#engine = create_engine(str(r"mysql+pymysql://%s:" + '%s' + "@%s:%s/%s?charset=utf8") % (dbuser, dbpass, dbhost,dbport, dbname))
 
 if not os.path.isdir(folder_path):
       os.makedirs(folder_path)
@@ -65,11 +65,11 @@ for number in stock_id:
         content = json.loads(response.text)['msgArray']
         raw = pandas.DataFrame(content)
         raw.to_csv('{}/{}/{}_raw.csv'.format(path, date.today().strftime('%Y%m%d'), stock))
-        raw.to_sql(name='tb_raw',con=engine,if_exists='append',index=False)
+#        raw.to_sql(name='tb_raw',con=engine,if_exists='append',index=False)
     
         result = pandas.DataFrame(content)[['d','c','n','o','h','l','tv']].rename(index=str, columns={'d': '日期', 'c': '代號','n': '名稱','o':'開盤','h':'最高','l':'最低','tv':'當日成交量'})
         result.to_csv('{}/{}/{}.csv'.format(path, date.today().strftime('%Y%m%d'), stock))
-        result.to_sql(name='tb_filter',con=engine,if_exists='append',index=False)
+#        result.to_sql(name='tb_filter',con=engine,if_exists='append',index=False)
     except KeyError:
         print('Error ! stock : '+stock+' need to query again.')
         continue
